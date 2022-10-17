@@ -17,13 +17,15 @@
 		"sourceMap": true,
 		"strict": true,
 		"target": "ESNext",
-    "isolatedModules": true,
+		"isolatedModules": true,
 		"types": [
-			"vite/client"
+			"vite/client",
+			"@types/node"
 		],
 		"useDefineForClassFields": true,
 	},
 	"include": [
-		"./src"
+		"src",
+		"stories",
 	]
 }

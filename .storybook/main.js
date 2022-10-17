@@ -7,7 +7,7 @@ module.exports = {
 
   framework: '@storybook/html',
 
-  stories: ['../src/**/*.stories.tsx'],
+  stories: ['../stories/**/*.stories.tsx'],
 
   addons: [
     '@storybook/addon-links',
