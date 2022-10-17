@@ -1,11 +1,14 @@
 {
 	"compilerOptions": {
-		"jsx": "react",
-		"target": "ESNext",
-		"module": "ESNext",
-		"lib": ["ESNext", "DOM"],
-		"moduleResolution": "Node",
 		"esModuleInterop": true,
+		"jsx": "preserve",
+		"jsxImportSource": "solid-js",
+		"lib": [
+			"ESNext",
+			"DOM"
+		],
+		"module": "ESNext",
+		"moduleResolution": "Node",
 		"noEmit": true,
 		"noImplicitReturns": true,
 		"noUnusedLocals": true,
@@ -13,7 +16,14 @@
 		"resolveJsonModule": true,
 		"sourceMap": true,
 		"strict": true,
+		"target": "ESNext",
+    "isolatedModules": true,
+		"types": [
+			"vite/client"
+		],
 		"useDefineForClassFields": true,
 	},
-	"include": ["./src"]
+	"include": [
+		"./src"
+	]
 }
