@@ -15,8 +15,8 @@ import type {
   TableOptions,
   TableState,
 } from '@tanstack/solid-table';
+import type { PaperProps } from '@suid/material/Paper';
 import { MST_AggregationFns } from './aggregationFns';
-// import { MST_DefaultColumn, MST_DefaultDisplayColumn } from './column.utils';
 import { MST_FilterFns } from './filterFns';
 import { MST_Default_Icons, MST_Icons } from './icons';
 import { MST_SortingFns } from './sortingFns';
@@ -166,16 +166,16 @@ export type MST_TableInstance<TData extends Record<string, any> = {}> = Omit<
     icons: MST_Icons;
     localization: MST_Localization;
   };
-  // refs: {
-  //   bottomToolbarRef: MutableRefObject<HTMLDivElement>;
-  //   editInputRefs: MutableRefObject<Record<string, HTMLInputElement>>;
-  //   filterInputRefs: MutableRefObject<Record<string, HTMLInputElement>>;
-  //   searchInputRef: MutableRefObject<HTMLInputElement>;
-  //   tableContainerRef: MutableRefObject<HTMLDivElement>;
-  //   tableHeadCellRefs: MutableRefObject<Record<string, HTMLTableCellElement>>;
-  //   tablePaperRef: MutableRefObject<HTMLDivElement>;
-  //   topToolbarRef: MutableRefObject<HTMLDivElement>;
-  // };
+  refs: {
+    bottomToolbarRef: HTMLDivElement;
+    editInputRefs: Record<string, HTMLInputElement>;
+    filterInputRefs: Record<string, HTMLInputElement>;
+    searchInputRef: HTMLInputElement;
+    tableContainerRef: HTMLDivElement;
+    tableHeadCellRefs: Record<string, HTMLTableCellElement>;
+    tablePaperRef: HTMLDivElement;
+    topToolbarRef: HTMLDivElement;
+  };
   // setColumnFilterFns: Dispatch<
   //   SetStateAction<{ [key: string]: MST_FilterOption }>
   // >;
@@ -871,9 +871,9 @@ export type MaterialSolidTableProps<TData extends Record<string, any> = {}> =
     //     }: {
     //       table: MST_TableInstance<TData>;
     //     }) => Partial<TablePaginationProps>);
-    // muiTablePaperProps?:
-    //   | PaperProps
-    //   | (({ table }: { table: MST_TableInstance<TData> }) => PaperProps);
+    muiTablePaperProps?:
+      | PaperProps
+      | (({ table }: { table: MST_TableInstance<TData> }) => PaperProps);
     // muiTableProps?:
     //   | TableProps
     //   | (({ table }: { table: MST_TableInstance<TData> }) => TableProps);

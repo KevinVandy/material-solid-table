@@ -29,10 +29,20 @@ import type {
 } from '..';
 import { GroupingState, TableState } from '@tanstack/solid-table';
 import Modal from '@suid/material/Modal';
+import { MST_TablePaper } from './MST_TablePaper';
 
 export const MST_TableRoot = <TData extends Record<string, any> = {}>(
   props: MaterialSolidTableProps<TData> & { localization: MST_Localization },
 ) => {
+  let bottomToolbarRef,
+    editInputRefs,
+    filterInputRefs,
+    searchInputRef,
+    tableContainerRef,
+    tableHeadCellRefs,
+    tablePaperRef,
+    topToolbarRef;
+
   const createInitialState = (): Partial<MST_TableState<TData>> => {
     const initState = props.initialState ?? {};
     initState.columnOrder =
@@ -203,6 +213,16 @@ export const MST_TableRoot = <TData extends Record<string, any> = {}>(
         ...props.state,
       } as TableState,
     }),
+    refs: {
+      bottomToolbarRef,
+      editInputRefs,
+      filterInputRefs,
+      searchInputRef,
+      tableContainerRef,
+      tableHeadCellRefs,
+      tablePaperRef,
+      topToolbarRef,
+    },
     setColumnFilterFns: props.onFilterFnsChange ?? setColumnFilterFns,
     setDensity: props.onDensityChange ?? setDensity,
     setDraggingColumn: props.onDraggingColumnChange ?? setDraggingColumn,
@@ -219,9 +239,12 @@ export const MST_TableRoot = <TData extends Record<string, any> = {}>(
   } as MST_TableInstance<TData>;
 
   return (
-    <Show fallback={<div>paper</div>} when={table.getState().isFullScreen}>
+    <Show
+      fallback={<MST_TablePaper table={table as any} />}
+      when={table.getState().isFullScreen}
+    >
       <Modal open={table.getState().isFullScreen}>
-        <div>paper</div>
+        <MST_TablePaper table={table as any} />
       </Modal>
     </Show>
   );
